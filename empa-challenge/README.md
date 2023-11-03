@@ -6,19 +6,19 @@ This project addresses a front-end challenge focused on creating an efficient ev
 
 ## Challenge Requirements
 
-🏗️ **Project Setup:** 
-    
+- 🏗️ **Project Setup:**  
+
     The project is set up using Next.js, a widely recognized React framework.
 
-☑️ **Form Components**: 
+- ☑️ **Form Components:**
 
     The form includes fields for Event Description, Type of Event, Event Date (featuring a date-time picker), and yearly recurrence (using checkboxes).
 
-📝 **Form Submission**: 
-
+- 📝 **Form Submission:** 
+    
     Upon submission, the entered data is saved into a state (an array object), and the event details are instantly displayed below the form.
 
-📦 **Technologies**: 
+- 📦 **Technologies:**
 
     Material UI is employed for styling, while react-hook-form is used for form handling.
 
