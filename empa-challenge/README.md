@@ -43,5 +43,13 @@ The project comprises two primary components: `EventForm` and `Index`.
 
 - Enhancing the clock visualization within the date-time picker.
 
+- Implementing an alert notification to inform users of submission restrictions in cases of omitted date and time selections.
+
+## ✨ Additional Information:
+
+- Validations have been implemented to prevent form submission with empty fields and ensure that the event date and time are set to a future moment.
+
+- A unique ID is assigned to each generated event, enhancing data management and processing.
+
 
 

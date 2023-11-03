@@ -6,23 +6,23 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
 import EventIcon from '@mui/icons-material/Event'
-import LockOpenIcon from '@mui/icons-material/LockOpen'
 import LockIcon from '@mui/icons-material/Lock'
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import ErrorIcon from '@mui/icons-material/Error'
 
 type Event = {
-  eventDescription: string;
-  eventType: string;
-  eventDate: string | undefined;
-  yearlyRepetition: boolean;
+  eventDescription: string
+  eventType: string
+  eventDate: string | undefined
+  yearlyRepetition: boolean
 }
 
 export default function Home() {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([])
 
   const handleSubmit = (data: Event) => {
-    setEvents([...events, data]);
+    setEvents([...events, data])
   }
 
   return (
@@ -34,30 +34,27 @@ export default function Home() {
           marginBottom: 8,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'center'
         }}
       >
-        <Typography component="h2" variant="h6" color="text.primary" sx={{ fontWeight: 'bold' }}>
-        EMPA's Event Planner
-        </Typography>
-        <Typography component="h2" variant="h4" color="text.primary" sx={{ fontWeight: 'bold', marginBottom: 8 }}>
-          Welcome!
+        <Typography component="h1" variant="h4" color="text.primary" sx={{ fontWeight: 'bold', marginBottom: 6 }}>
+          EMPA Event Planner
         </Typography>
         <EventForm onSubmit={handleSubmit} />
-        <Typography variant="h6" sx={{ marginTop: 8, marginBottom: 4, color: 'text.primary', fontWeight: 'bold' }}>
+        <Typography variant="h6" sx={{ marginTop: 10, marginBottom: 4, color: 'text.primary', fontWeight: 'bold' }}>
           Your Upcoming Events
         </Typography>
-        {events.length === 0 ? ( 
+        {events.length === 0 ? (
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
+              gap: 2
             }}
           >
-            <ErrorIcon sx={{ color: '#1976D2', fontSize: '24px' }} /> 
+            <ErrorIcon sx={{ color: '#1976D2', fontSize: '24px' }} />
             <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Your events list is empty 
+              Your events list is empty
             </Typography>
           </Box>
         ) : (
@@ -86,24 +83,23 @@ export default function Home() {
                 <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold', marginBottom: '8px' }}>
                   Event id: #{index + 1}
                 </Typography>
+                <Typography variant="body1" color="text.primary" sx={{ fontWeight: 'bold', marginBottom: '8px' }}>
+                  {event.eventDescription}
+                </Typography>
                 <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
                   {event.eventType === 'Private' ? (
                     <LockIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
                   ) : (
-                    <LockOpenIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
+                    <BusinessCenterIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
                   )}
-                  {event.eventDescription}
+                  {event.eventType}
                 </Typography>
                 <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
                   <EventIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
                   {event.eventDate ? new Date(event.eventDate).toLocaleString('en-US', { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' }) : 'N/A'}
                 </Typography>
-                <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-                  {event.yearlyRepetition ? (
-                    <RefreshIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
-                  ) : (
-                    <LockOpenIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
-                  )}
+                <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+                  <RefreshIcon sx={{ color: '#1976D2', marginRight: '4px', fontSize: '20px' }} />
                   Yearly recurrence: {event.yearlyRepetition ? 'Yes' : 'No'}
                 </Typography>
               </Paper>
@@ -114,5 +110,8 @@ export default function Home() {
     </Container>
   )
 }
+
+
+
 
 

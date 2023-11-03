@@ -3,6 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import TextField from '@mui/material/TextField'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
+import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
@@ -55,7 +56,7 @@ export default function EventForm({ onSubmit }: EventFormProps) {
             <Typography variant="subtitle2" color="primary">
                 To create a new event, please complete the form:
             </Typography>
-            <Box sx={{ mt: 2, mb: 2 }}>
+            <Box sx={{ mt: 4, mb: -1 }}>
                 <Typography variant="subtitle1">
                     Tell us about your event
                 </Typography>
@@ -76,8 +77,8 @@ export default function EventForm({ onSubmit }: EventFormProps) {
                 />
             </Box>
 
-            <Box sx={{ mb: 2 }}>
-                <Typography variant="subtitle1">
+            <Box sx={{ mt: 4, mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
                     What type of event is it?
                 </Typography>
                 <Controller
@@ -85,15 +86,13 @@ export default function EventForm({ onSubmit }: EventFormProps) {
                     control={control}
                     defaultValue=""
                     render={({ field }) => (
-                        <FormControl fullWidth>
+                        <FormControl fullWidth required>
+                            <InputLabel id="eventType-label">Choose an option</InputLabel>
                             <Select
-                                label="Type of Event"
+                                labelId="eventType-label"
+                                label="Choose an option"
                                 {...field}
-                                required
                             >
-                                <MenuItem value="" disabled>
-                                    Choose an option
-                                </MenuItem>
                                 <MenuItem value="Private">Private</MenuItem>
                                 <MenuItem value="Company">Company</MenuItem>
                             </Select>
@@ -102,8 +101,8 @@ export default function EventForm({ onSubmit }: EventFormProps) {
                 />
             </Box>
 
-            <Box sx={{ mb: 2 }}>
-                <Typography variant="subtitle1">
+            <Box sx={{ mt: 4, mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
                     When will the event take place?
                 </Typography>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -123,9 +122,10 @@ export default function EventForm({ onSubmit }: EventFormProps) {
                                         seconds: renderTimeViewClock,
                                     }}
                                     onChange={(value) => {
-                                        field.onChange(value?.toString());
-                                        setDateError(false);
+                                        field.onChange(value?.toString())
+                                        setDateError(false)
                                     }}
+                                    sx={{ width: '100%' }} 
                                 />
                             </div>
                         )}
@@ -133,9 +133,9 @@ export default function EventForm({ onSubmit }: EventFormProps) {
                 </LocalizationProvider>
             </Box>
 
-            <Box sx={{ mb: 2 }}>
-                <FormControl component="fieldset">
-                    <Typography variant="subtitle1">
+            <Box sx={{ mt: 4, mb: 2 }}>
+                <FormControl component="fieldset" >
+                    <Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
                         Is this an annual event?
                     </Typography>
                     <Controller
@@ -148,7 +148,6 @@ export default function EventForm({ onSubmit }: EventFormProps) {
                                 justifyContent="space-between"
                                 alignItems="center"
                             >
-
                                 <FormControlLabel
                                     control={
                                         <Checkbox
