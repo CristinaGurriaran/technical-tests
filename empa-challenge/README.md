@@ -12,7 +12,7 @@ This project addresses a front-end challenge focused on creating an efficient ev
 
 - ☑️ **Form Components:**
 
-    The form includes fields for Event Description, Type of Event, Event Date (featuring a date-time picker), and yearly recurrence (using checkboxes).
+    The form includes fields for Event Description, Type of Event, Event Date (featuring Material UI's Date Time Picker component), and Yearly Recurrence (using checkboxes).
 
 - 📝 **Form Submission:** 
     
@@ -41,9 +41,10 @@ The project comprises two primary components: `EventForm` and `Index`.
 
 - Ensuring that both Yearly Repetition checkboxes are automatically deselected after form submission.
 
-- Enhancing the clock visualization within the date-time picker.
-
 - Implementing an alert notification to inform users of submission restrictions in cases of omitted date and time selections.
+
+- Enhancing analog clock display of Material UI's Date Time Picker component.
+
 
 ## ✨ Additional Information:
 
